@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_employee_income3 FOLDER = '/2 - integration' AS SELECT job_id, job_title, min_salary, max_salary, employee_id, first_name, last_name, email, phone_number, hire_date, salary, commission_pct, manager_id, department_id, (salary+commission_pct) AS income FROM (SELECT * FROM bv_hr_jobs UNION SELECT phone_number, email, commission_pct, first_name, last_name, hire_date, salary, job_id, department_id, manager_id, employee_id FROM bv_hr_employees);
+
+ALTER VIEW iv_employee_income3
+ LAYOUT (bv_hr_jobs = [20, 20, 200, 106], bv_hr_employees = [310, 30, 200, 225]);
+

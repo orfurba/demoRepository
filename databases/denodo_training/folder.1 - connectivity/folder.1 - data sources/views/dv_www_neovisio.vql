@@ -1,0 +1,22 @@
+﻿CREATE OR REPLACE TABLE dv_www_neovisio I18N us_pst (
+        name:text, 
+        department:text, 
+        password:text (extern), 
+        login:text (extern)
+    )
+    FOLDER = '/1 - connectivity/1 - data sources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD neovisio(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD name NOS ZERO ()
+             ADD department NOS ZERO ()
+             ADD password (=) OBL ONE
+             ADD login (=) OBL ONE
+        )
+        OUTPUTLIST (department, name
+        )
+        WRAPPER (itp neovisio)
+    );
+

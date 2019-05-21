@@ -1,0 +1,21 @@
+﻿CREATE OR REPLACE INTERFACE VIEW interaction (
+        customer_code:text,
+        agent_id:decimal,
+        interaction_date:localdate,
+        case_id:decimal,
+        interaction_phone:text,
+        interaction_ip:text
+    )
+    SET IMPLEMENTATION iv_interactions(
+        customer_code = customer_code,
+        agent_id = agent_id,
+        interaction_date = cast('localdate', interaction_date),
+        case_id = case_id,
+        interaction_phone = interaction_phone,
+        interaction_ip = interaction_ip    
+)
+    FOLDER = '/6 - business entities';
+
+ALTER VIEW interaction
+ LAYOUT (iv_interactions = [572, 228, 233, 146]);
+

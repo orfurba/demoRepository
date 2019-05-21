@@ -1,0 +1,19 @@
+﻿CREATE OR REPLACE TABLE bv_cc_status_code2 I18N us_pst (
+        code_id:int (sourcetypeid = '4'), 
+        code_description:text (sourcetypeid = '12')
+    )
+    FOLDER = '/1 - connectivity/2 -  base views'
+    PRIMARY KEY ( 'code_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD ds_calltracking(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD code_id (any) OPT ANY
+             ADD code_description (any) OPT ANY
+        )
+        OUTPUTLIST (code_description, code_id
+        )
+        WRAPPER (custom ds_calltracking)
+    );
+

@@ -1,0 +1,15 @@
+﻿CREATE OR REPLACE INTERFACE VIEW product (
+        productid:int,
+        productname:text,
+        productprice:float
+    )
+    SET IMPLEMENTATION bv_product(
+        productid = productid,
+        productname = productname,
+        productprice = productprice    
+)
+    FOLDER = '/6 - business entities';
+
+ALTER VIEW product
+ LAYOUT (bv_product = [587, 245, 367, 226]);
+
