@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_employee_seniority FOLDER = '/2 - integration' AS SELECT iv_employee_income.manager_id AS manager_id, iv_employee_income.department_id AS department_id, round(cast('decimal', ((current_date()-iv_employee_income.hire_date)/365)), 1) AS seniority, iv_employee_income.employee_id AS employee_id, iv_employee_income.first_name AS first_name, iv_employee_income.last_name AS last_name, iv_employee_income.email AS email, iv_employee_income.phone_number AS phone_number, iv_employee_income.hire_date AS hire_date, iv_employee_income.job_id AS job_id, iv_employee_income.salary AS salary, iv_employee_income.commission_pct AS commission_pct FROM iv_employee_income;
+
+ALTER VIEW iv_employee_seniority
+ LAYOUT (iv_employee_income = [20, 20, 218, 246]);
+

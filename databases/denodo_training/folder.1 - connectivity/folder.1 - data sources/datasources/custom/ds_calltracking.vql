@@ -1,0 +1,21 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM ds_calltracking
+    FOLDER = '/1 - connectivity/1 - data sources'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM ds_calltracking
+    FOLDER = '/1 - connectivity/2 -  base views'
+    DATASOURCENAME=ds_calltracking
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.denodo_training.folder.1 - connectivity.folder.2 -  base views.views.custom.ds_calltracking.File location.ROUTE.LOCAL.PATH}',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        code_id = 'code_id' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        code_description = 'code_description' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+

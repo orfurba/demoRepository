@@ -1,0 +1,9 @@
+﻿CREATE OR REPLACE ASSOCIATION borrar_nopk REFERENTIAL CONSTRAINT 
+FOLDER = '/3 - associations'
+    ENDPOINT sss bv_cc_service_call PRINCIPAL (1)
+    ENDPOINT qqq bv_cc_service_location (0,*)
+    ADD MAPPING location_id=id;
+
+ALTER ASSOCIATION borrar_nopk
+ LAYOUT (bv_cc_service_call = [153, 171, 200, 225], bv_cc_service_location = [602, 249, 200, 146]);
+
