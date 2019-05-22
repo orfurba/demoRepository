@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 this is master
 this is master
 this is master
@@ -11,3 +12,6 @@ this is master
 this is master
 this is master
 this is master
+=======
+esto es en brachTree
+>>>>>>> branchTree
